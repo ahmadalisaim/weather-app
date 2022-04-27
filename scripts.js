@@ -9,12 +9,21 @@ async function loadweather() {
   }
 
   const data = await response.json();
+  let city_name = data.name;
+  let country = data.sys.country;
+  let temperature = data.main.temp;
+  document.getElementById("city_name").innerHTML = city_name;
+  document.getElementById("country_name").innerHTML = "(" + country + ")";
   console.log(data);
+}
+
+function displayData() {
+  document.getElementById("city_name").innerHTML = city_name;
 }
 
 function getLocation() {
   //   console.log("get location started");
   loadweather();
 }
-
-window.onload = getLocation();
+getLocation();
+// window.onload = getLocation();
