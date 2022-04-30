@@ -4,20 +4,55 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Weather APP</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
-    <header>Weather APP</header>
+    <header>&nbsp;</header>
     <main>
-      <div>
-        <h2>
-          <span id="city_name"></span>
-          <span id="country_name"></span>
-        </h2>
+      <div class="time_place">
+        <div class="time">
+          <span id="hours">00</span>
+          <span>:</span>
+          <span id="minutes">00</span>
+          <span></span>
+          <span id="session">AM</span>
+          <div class="date">Saturday 30,2022</div>
+          <!-- <h2 id="Temperature"></h2> -->
+        </div>
+        <div class="place_country">Asia/Karachi</div>
       </div>
-      <div>
-        <!-- <h2 id="Temperature"></h2> -->
+      <div class="container">
+        <div class="current_info">
+          <div>
+            <h3>
+              <span id="city_name">London </span>
+              <span>,</span>
+              <span id="country_name">(UK)</span>
+            </h3>
+            <p>CURRENT WEATHER</p>
+            <div class="weather_items">
+              <img
+                id="current_icon"
+                src="/assets/weather_icon.png"
+                alt="weather icon"
+              />
+              <div>
+                <p id="current_temperature">44 <span>&deg;C</span></p>
+                <p>FEELS LIKE: <span>44</span><span>&deg;C</span></p>
+                <p>HAZE</p>
+              </div>
+            </div>
+            <div id="current_weather_items"></div>
+          </div>
+        </div>
+        <div class="city_info">
+          <h2>Check Current weather Forecast For Any Location In World</h2>
+          <input type="text" placeholder="Enter City Name" id="city_input" />
+          <button type="button" class="city_info_btn">
+            Get Current Weather
+          </button>
+        </div>
       </div>
     </main>
     <script src="scripts.js"></script>

@@ -13,11 +13,120 @@ a{
     text-decoration: none;
     color:gold;
 }
+
 body{
-    background: url(/assets/beach-bg.jpg);
+    background: url(/assets/beach-2.jpg);
     background-size: cover;
+    background-blend-mode: multiply;
+    background-color: #666666b0;
+    
 }
+
 header{
     text-align: center;
     font-size: 2rem;
+}
+.time{
+    font-size: 3rem;
+    margin-left: 50px;
+    color: white;
+}
+#session{
+    font-size: 1.3rem;
+}
+h3{
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+.current_info p{
+    padding: 5px 12px;
+    font-size: 0.8rem;
+}
+#current_icon{
+    width: 100px;
+    padding: 10px 10px;
+}
+.current_info{
+    width: 400px;
+    height: 300px;
+    margin-left: 50px;
+    background: rgba(24,24,27,0.6);
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.2);
+    color: white;
+   
+}
+.city_info{
+    width: 60%;
+    height: 60vh;
+    background:rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 2rem 0 rgba(0, 0, 0, 0.2);
+    margin-left: 40px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+}
+#city_input{
+    color: #333;
+    font-size: 1.2rem;
+    margin: 10px 20px;
+    padding: 0.7rem 2rem;
+    border-radius: 0.2rem;
+    width: 65%;
+    display: inline-block;
+    border: 3px solid;
+}
+.city_info_btn{
+    background: #050031;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.2em;
+    color: white;
+    padding: 1rem 2rem;
+    display: inline-block;
+    font-size: 1rem;
+    
+}
+.weather_items{
+    display: flex;
+    align-items: center;
+}
+#current_temperature{
+    font-size: 2.5rem;
+}
+.city_info > h2{
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top:10px ;
+    color: #050031;
+    letter-spacing: -0.035em;
+}
+.time_place{
+    display:flex;
+    justify-content: space-between;
+    color: white;
+}
+.place_country{
+    font-size: 2rem;
+    margin-right: 50px;
+}
+.date{
+    font-size: 2rem;
+    padding-bottom: 20px;
+}
+#current_weather_items{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+}
+.weather-item{
+    display: flex;
+    justify-content: space-between;
 }
