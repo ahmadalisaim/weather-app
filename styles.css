@@ -45,8 +45,8 @@ h3{
     padding: 5px 12px;
     font-size: 0.8rem;
 }
-#current_icon{
-    width: 100px;
+#current_icon,#city_icon{
+    width: 130px;
     padding: 10px 10px;
 }
 .current_info{
@@ -104,7 +104,7 @@ h3{
 .city_info > h2{
     text-align: center;
     font-size: 1.5rem;
-    padding-top:10px ;
+    padding-top:25px ;
     color: #050031;
     letter-spacing: -0.035em;
 }
@@ -129,4 +129,11 @@ h3{
 .weather-item{
     display: flex;
     justify-content: space-between;
+}
+.city_items{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #050031;
+    font-size: 1.3rem;
 }

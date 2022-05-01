@@ -20,7 +20,7 @@
           <div class="date">Saturday 30,2022</div>
           <!-- <h2 id="Temperature"></h2> -->
         </div>
-        <div class="place_country">Asia/Karachi</div>
+        <div class="place_country" id="place_country">Asia/Karachi</div>
       </div>
       <div class="container">
         <div class="current_info">
@@ -39,8 +39,11 @@
               />
               <div>
                 <p id="current_temperature">44 <span>&deg;C</span></p>
-                <p>FEELS LIKE: <span>44</span><span>&deg;C</span></p>
-                <p>HAZE</p>
+                <p>
+                  FEELS LIKE: <span id="current_feels_like">44</span
+                  ><span>&deg;C</span>
+                </p>
+                <p id="current_weather_condition">HAZE</p>
               </div>
             </div>
             <div id="current_weather_items"></div>
@@ -49,9 +52,14 @@
         <div class="city_info">
           <h2>Check Current weather Forecast For Any Location In World</h2>
           <input type="text" placeholder="Enter City Name" id="city_input" />
-          <button type="button" class="city_info_btn">
+          <button
+            type="button"
+            class="city_info_btn"
+            onclick="display_city_weather();"
+          >
             Get Current Weather
           </button>
+          <div class="city_items" id="city_items"></div>
         </div>
       </div>
     </main>
