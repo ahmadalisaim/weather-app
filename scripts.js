@@ -5,9 +5,34 @@ const feels_ht = document.getElementById("current_feels_like");
 const weather_condition_ht = document.getElementById(
   "current_weather_condition"
 );
+const date_ht = document.getElementById("current_date");
 const icon_ht = document.getElementById("current_icon");
 const place_ht = document.getElementById("place_country");
 const city_input = document.getElementById("city_input");
+
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 setInterval(getTime, 1000);
 getLocation();
 async function loadweather(lat, long) {
@@ -87,8 +112,12 @@ function failed() {
 //Get Current Time
 function getTime() {
   let time = new Date();
-  let hours = time.getHours() % 12;
+  let hours = time.getHours();
   let minutes = time.getMinutes();
+  let month = time.getMonth();
+  let date = time.getDate();
+  let day = time.getDay();
+  let hourin12hr = hours >= 13 ? hours % 12 : hours;
   //   let seconds = time.getSeconds();
 
   let session = document.getElementById("session");
@@ -101,10 +130,12 @@ function getTime() {
   } else {
     session.innerHTML = "AM";
   }
-  document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+  document.getElementById("hours").innerHTML =
+    hourin12hr < 10 ? "0" + hourin12hr : hourin12hr;
   document.getElementById("minutes").innerHTML =
     minutes < 10 ? "0" + minutes : minutes;
   //   document.getElementById("seconds").innerHTML = seconds;
+  date_ht.innerHTML = days[day] + ", " + date + " " + months[month];
 }
 function show_current_weather_block(data_current) {
   let { humidity, pressure, sunrise, sunset, wind_speed } =

@@ -103,10 +103,11 @@ h3{
 }
 .city_info > h2{
     text-align: center;
-    font-size: 1.5rem;
-    padding-top:25px ;
+    font-size: 31px;
+    padding-top: 25px;
     color: #050031;
-    letter-spacing: -0.035em;
+    letter-spacing: 1.1px;
+    font-family: Roboto,sans-serif;
 }
 .time_place{
     display:flex;
