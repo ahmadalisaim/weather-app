@@ -13,7 +13,6 @@ a{
     text-decoration: none;
     color:gold;
 }
-
 body{
     background: url(/assets/beach-2.jpg);
     background-size: cover;
@@ -137,4 +136,49 @@ h3{
     justify-content: space-around;
     color: #050031;
     font-size: 1.3rem;
+}
+@media only screen and (max-width: 480px){
+    .time{
+        margin-left: 20px;
+        font-size: 2rem;
+    }
+    .date{
+        font-size: 1.6rem;
+    }
+    .place_country{
+        font-size: 1.5rem;
+        margin-right: 20px;
+    }
+    .container{
+        flex-direction: column;
+    }
+    .current_info{
+        margin:0 20px ;
+        width: 350px;
+    }
+    .city_info{
+        margin: 20px auto;
+        width: 350px;
+        height: auto;
+    }
+    div > .city_info > h2{
+        font-size: 17px;
+        padding-bottom: 10px;
+        padding-top: 20px;
+    }
+    #city_input{
+        width: 90%;
+        display: block;
+        margin: 0 auto;
+    }
+    .city_info_btn{
+        display: block;
+        margin: 15px auto;
+        width: 90%;
+        
+    }
+    #city_items{
+        flex-direction: column;
+    }
+
 }

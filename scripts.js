@@ -1,3 +1,4 @@
+//Getting html elements
 const cityht = document.getElementById("city_name");
 const countryht = document.getElementById("country_name");
 const temp_ht = document.getElementById("current_temperature");
@@ -33,8 +34,11 @@ const months = [
   "Nov",
   "Dec",
 ];
-setInterval(getTime, 1000);
+setInterval(getTime, 1000); //Run getTime function every second to update time
 getLocation();
+//Run getLocation function every 5 minutes to update the weather data in real Time
+setInterval(getLocation, 300000);
+//Get weather data for the current latitude and longitude of the user
 async function loadweather(lat, long) {
   let latitude = lat;
   let longitude = long;
@@ -42,7 +46,7 @@ async function loadweather(lat, long) {
   const endpoint = new URL(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${app_id}`
   );
-  //////////Promise.all to run 2 API requests in paralell////////
+  //////////Promise.all to fetch data from 2 API requests in paralell////////
 
   const [response, response_current] = await Promise.all([
     fetch(endpoint),
@@ -82,7 +86,7 @@ async function loadweather(lat, long) {
   console.log(data_current);
 }
 
-//   Get Current location
+//   Get Current location of user
 function getLocation() {
   let options = {
     enableHighAccuracy: true,
@@ -95,7 +99,7 @@ function getLocation() {
     alert("sorry your browser doesn't support geolocation");
   }
 }
-
+//Get current latitude and longitude in case location obtained successfully
 function success(position) {
   console.log("Location obtained successfully");
   let cords = position.coords;
@@ -105,11 +109,11 @@ function success(position) {
 
   loadweather(latitude, longitude);
 }
-
+//Function to show message in case location was not obtained or the browser doesnt support gelocation API
 function failed() {
   console.log("couldnt obtain location");
 }
-//Get Current Time
+//Function to get Current Time and display
 function getTime() {
   let time = new Date();
   let hours = time.getHours();
@@ -134,9 +138,9 @@ function getTime() {
     hourin12hr < 10 ? "0" + hourin12hr : hourin12hr;
   document.getElementById("minutes").innerHTML =
     minutes < 10 ? "0" + minutes : minutes;
-  //   document.getElementById("seconds").innerHTML = seconds;
   date_ht.innerHTML = days[day] + ", " + date + " " + months[month];
 }
+//Function to show the current weather info bloack
 function show_current_weather_block(data_current) {
   let { humidity, pressure, sunrise, sunset, wind_speed } =
     data_current.current;
@@ -161,7 +165,7 @@ function show_current_weather_block(data_current) {
       </div>
       `);
 }
-
+//Function to display weather of any city based on input provided
 async function display_city_weather() {
   if (city_input.value == "") {
     alert("Please Enter A City Name");
@@ -171,8 +175,16 @@ async function display_city_weather() {
     `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&units=metric&appid=6aea09e86a2248ecc6ac4a53217bd2d8`
   );
   const city_data = await city_response.json();
+  if (city_response.status == 404) {
+    const add_city = (document.getElementById("city_items").innerHTML = `
+  
+    
+    <div>City Not Found</div>
+    
+  `);
+  }
   let city_temp = city_data.main.temp;
-  let condition_weather = city_data.weather[0].description;
+  let condition_weather = city_data.weather[0].description.toUpperCase();
   let city_icon = city_data.weather[0].icon;
   let citycont_name = city_data.name;
   let cityCountryName = city_data.sys.country;
@@ -186,8 +198,16 @@ async function display_city_weather() {
             <div><span>${citycont_name}</span><span>,</span><span>(${cityCountryName})</span></div>
             <div class="city_temperature_day">
               Temperature :&nbsp;<span>${city_temp}</span><span>&deg;C</span>
+              <span style="display: block;">Feels Like: ${city_data.main.feels_like}<span>&deg;C</span></span>
             </div>
             <div class="mist">${condition_weather}</div>
           `);
   console.log(city_data);
 }
+
+//Map Enter Key to the Submit button:
+city_input.addEventListener("keypress", function (e) {
+  if (e.code === "Enter") {
+    display_city_weather();
+  }
+});
